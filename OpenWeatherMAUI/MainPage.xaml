@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OpenWeatherMAUI.MainPage">
+              
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <BoxView Grid.Row="0" Grid.RowSpan="3">
+            <BoxView.Background>
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="DarkViolet" Offset="0"/>
+                    <GradientStop Color="BlueViolet" Offset="0.3"/>
+                    <GradientStop Color="DarkBlue" Offset="1"/>
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <Grid Grid.Row="0" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="currentSity" Grid.Row="0"
+                Text="Нет данных о городе"
+                FontSize="24"
+                TextColor="White" Padding="10,0,0,0"/>
+            <Image Grid.Row="1" x:Name="weatherIcon" Source="dotnet_bot.png" MaximumWidthRequest="200" WidthRequest="200" Aspect="AspectFill" HorizontalOptions="Center"/>
+            <Label Grid.Row="2" x:Name="temperatur" Text="10c" FontSize="36" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+            <Label Grid.Row="3" x:Name="currentdata" Text="Data:16.03.2025" HorizontalOptions="Center" VerticalOptions="Start" TextColor="White" FontSize="16"/>
+        </Grid>
+
+        <Border Grid.Row="2" Grid.RowSpan="2" Margin="5,20,5,0"
+            BackgroundColor="White"
+                StrokeThickness="3">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <Grid ColumnSpacing="10" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                </Grid.ColumnDefinitions>
+                <VerticalStackLayout Grid.Column="0">
+                    <Image Source="icons8atmosphericpressure100.png"/>
+                    <Label x:Name="pressure" Text="1000pm"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1">
+                    <Image Source="icons8clouds100.png"/>
+                    <Label x:Name="clouds" Text="100"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="2">
+                    <Image Source="icons8snowstorm100.png"/>
+                    <Label x:Name="snowstorm" Text="0 m/s"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="3">
+                    <Image Source="icons8visibility100.png"/>
+                    <Label x:Name="visibility" Text="10000M"/>
+                </VerticalStackLayout>
+            </Grid>
+            <Border.Shadow>
+                <Shadow Offset="2,5" Radius="2" Opacity="0.4"/>
+            </Border.Shadow>
+        </Border>
+        <Grid Grid.Row="5" Padding="10" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.4*"/>
+            </Grid.ColumnDefinitions>
+            <Entry x:Name="entrySity" Grid.Column="0" Placeholder="Город" FontSize="23"/>
+            <Button x:Name="GetWeatherButton" Grid.Column="1" Text="Получить погоду" Clicked="GetWeatherButton_Clicked"/>
+        </Grid>
+        <ActivityIndicator x:Name="activityIndicator" Grid.Row="4" Color="DarkViolet"/>
+    </Grid>
+
+</ContentPage>
